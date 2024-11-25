@@ -1,0 +1,52 @@
+---
+
+- name: Установка Docker SDK для Python
+  hosts: app
+  become: true
+
+  roles:
+    - deusops-role
+
+  tasks:
+    - name: Установка pip для Python3
+      apt:
+        name: python3-pip
+        state: present
+
+    - name: Установка Docker SDK для Python через pip
+      pip:
+        name: docker
+        state: present
+        executable: pip3
+
+    - name: Установка requests версии 2.31.0
+      ansible.builtin.pip:
+        name: requests==2.31.0
+
+- name: Запуск прилаги на Django
+  hosts: app
+  become: true
+
+  tasks:
+    - name: Запуск прилаги на Django
+      docker_container:
+        name: django_app
+        image: timurbabs/django:latest
+        state: started
+        restart_policy: always
+        ports:
+          - "8000:8000"
+
+    - name: Ждем перед пингом сервера
+      pause:
+        seconds: 10
+
+    - name: Проверка прилаги
+      uri:
+        url: http://localhost:8000
+        return_content: yes
+      register: app_response
+
+    - name: Вывод контента
+      debug:
+        var: app_response.content

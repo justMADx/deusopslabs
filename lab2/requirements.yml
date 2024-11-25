@@ -1,0 +1,6 @@
+---
+roles:
+  - name: deusops-role
+    src: git+https://gitlab.com/ansible-deusops-roles/deusops-role.git
+    scm: git
+    version: main
