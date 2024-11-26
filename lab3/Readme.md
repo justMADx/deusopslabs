@@ -51,7 +51,7 @@ ansible-galaxy init nginx
 - *nginx/defaults/main.yml* создать переменные.
 - *nginx/tasks/main.yml* перенести задачи по поднятию nginx и использовать вместо значений переменные из *defaults*.
 - *nginx/handlers/main.yml* добавить handler на перезагрузку nginx.
-- *nginx/templates/nginx.conf.j2* прописать конфиг для поднятия и прокси nginx.
+- *nginx/templates/nginx.conf.j2* прописать конфиг для поднятия и прокси nginx на хосты [app].
 
 ### *Gitlab*
 
