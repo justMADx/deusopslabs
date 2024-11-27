@@ -1,0 +1,48 @@
+---
+
+    - name: Установка зависимостей
+      apt:
+        name: "{{ docker_apt_packages }}"
+        state: present
+        update_cache: yes
+
+    - name: Добавление GPG ключа Docker
+      apt_key:
+        url: "{{ docker_gpg_key }}"
+        state: present
+
+    - name: Добавление Docker репы
+      apt_repository:
+        repo: "{{ docker_repository }}"
+        state: present
+
+    - name: Обновление кеша пакетов
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: Установка Docker
+      apt:
+        name: docker-ce
+        state: present
+
+    - name: Запуск Docker и добавление в автостарт
+      systemd:
+        name: docker
+        enabled: true
+        state: started
+
+    - name: Добавление текущего юзера в группу Docker
+      user:
+        name: "{{ docker_user }}"
+        groups: docker
+        append: yes
+      when: ansible_user != 'root'
+
+    - name: Проверка версии Docker
+      command: docker --version
+      register: docker_version
+
+    - name: Проверяем, что версии идентичны
+      debug:
+        msg: "Установленная версия Docker: {{ docker_version.stdout }}"
