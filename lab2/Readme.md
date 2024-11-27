@@ -69,8 +69,8 @@ ansible-galaxy install -r requirements.yml
 ```
 ```
 Starting galaxy role install process
-- extracting deusops-role to /home/jusmad/.ansible/roles/deusops-role
-- deusops-role (main) was installed successfully
+- extracting docker-role to /home/jusmad/.ansible/roles/docker-role
+- docker-role (main) was installed successfully
 ```
 
 - Добавляем роль в *docker-playbook.yml* (roles) и запускаем

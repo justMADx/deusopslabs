@@ -1,6 +1,6 @@
 ---
 roles:
-  - name: deusops-role
-    src: git+https://gitlab.com/ansible-deusops-roles/deusops-role.git
+  - name: docker-role
+    src: git+https://gitlab.com/ansible-deusops-roles/docker-role.git
     scm: git
     version: main

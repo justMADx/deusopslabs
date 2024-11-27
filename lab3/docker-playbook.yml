@@ -10,7 +10,7 @@
   become: true
   gather_facts: true
   roles:
-    - deusops-role
+    - docker-role
 
 - name: Развертывание Django приложения
   hosts: app

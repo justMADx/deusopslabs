@@ -5,7 +5,7 @@
   become: true
 
   roles:
-    - deusops-role
+    - docker-role
 
   tasks:
     - name: Установка pip для Python3

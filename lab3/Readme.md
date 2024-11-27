@@ -70,9 +70,9 @@ ansible-galaxy install -r requirements.yml -f
 ```
 ```
 Starting galaxy role install process
-- changing role deusops-role from main to main
-- extracting deusops-role to /home/jusmad/.ansible/roles/deusops-role
-- deusops-role (main) was installed successfully
+- changing role docker-role from main to main
+- extracting docker-role to /home/jusmad/.ansible/roles/docker-role
+- docker-role (main) was installed successfully
 - extracting nginx-role to /home/jusmad/.ansible/roles/nginx-role
 - nginx-role (main) was installed successfully
 ```
